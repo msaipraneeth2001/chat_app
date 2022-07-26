@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -13,7 +15,7 @@ class UserImagePicker extends StatefulWidget {
 }
 
 class _UserImagePickerState extends State<UserImagePicker> {
-   File? _pickedImage;
+  File? _pickedImage;
 
   void _pickImage() async {
     final pickedImageFile = await ImagePicker().getImage(

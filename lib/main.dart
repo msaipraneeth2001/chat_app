@@ -20,19 +20,16 @@ class MyApp extends StatelessWidget {
           return MaterialApp(
             title: 'FlutterChat',
             theme: ThemeData(
-              primarySwatch: Colors.pink,
-              backgroundColor: Colors.pink,
-              // ignore: deprecated_member_use
-              accentColor: Colors.deepPurple,
-              // ignore: deprecated_member_use
-              accentColorBrightness: Brightness.dark,
+              backgroundColor: Colors.blue,
               buttonTheme: ButtonTheme.of(context).copyWith(
-                buttonColor: Colors.pink,
+                buttonColor: Colors.blue,
                 textTheme: ButtonTextTheme.primary,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
+              colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.blue)
+                  .copyWith(secondary: Colors.blue),
             ),
             home: appSnapshot.connectionState != ConnectionState.done
                 ? SplashScreen()

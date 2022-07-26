@@ -18,7 +18,7 @@ class Messages extends StatelessWidget {
                 .snapshots(),
             builder: (ctx, AsyncSnapshot<QuerySnapshot> chatSnapshot) {
               if (chatSnapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
+                return Center(
                   child: CircularProgressIndicator(),
                 );
               }

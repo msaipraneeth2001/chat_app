@@ -6,10 +6,7 @@ import '/widgets/chat/messages.dart';
 import '/widgets/chat/new_message.dart';
 
 class ChatScreen extends StatefulWidget {
-  const ChatScreen({Key? key}) : super(key: key);
-
   @override
-  // ignore: library_private_types_in_public_api
   _ChatScreenState createState() => _ChatScreenState();
 }
 
@@ -34,7 +31,7 @@ class _ChatScreenState extends State<ChatScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('FlutterChat'),
+        title: Text('FlutterChat'),
         actions: [
           DropdownButton(
             underline: Container(),
@@ -44,14 +41,16 @@ class _ChatScreenState extends State<ChatScreen> {
             ),
             items: [
               DropdownMenuItem(
-                value: 'logout',
-                child: Row(
-                  children: const <Widget>[
-                    Icon(Icons.exit_to_app),
-                    SizedBox(width: 8),
-                    Text('Logout'),
-                  ],
+                child: Container(
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.exit_to_app),
+                      SizedBox(width: 8),
+                      Text('Logout'),
+                    ],
+                  ),
                 ),
+                value: 'logout',
               ),
             ],
             onChanged: (itemIdentifier) {
@@ -62,13 +61,15 @@ class _ChatScreenState extends State<ChatScreen> {
           ),
         ],
       ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: Messages(),
-          ),
-          NewMessage(),
-        ],
+      body: Container(
+        child: Column(
+          children: <Widget>[
+            Expanded(
+              child: Messages(),
+            ),
+            NewMessage(),
+          ],
+        ),
       ),
     );
   }

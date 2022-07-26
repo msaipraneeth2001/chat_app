@@ -9,10 +9,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import '/widgets/auth/auth_form.dart';
 
 class AuthScreen extends StatefulWidget {
-  const AuthScreen({Key? key}) : super(key: key);
-
   @override
-  // ignore: library_private_types_in_public_api
   _AuthScreenState createState() => _AuthScreenState();
 }
 
@@ -48,7 +45,7 @@ class _AuthScreenState extends State<AuthScreen> {
         final ref = FirebaseStorage.instance
             .ref()
             .child('user_image')
-            .child('${authResult.user!.uid}.jpg');
+            .child('${authResult.user?.uid}.jpg');
 
         await ref.putFile(image);
 
@@ -64,16 +61,16 @@ class _AuthScreenState extends State<AuthScreen> {
         });
       }
     } on PlatformException catch (err) {
-      String? message = 'An error occurred, pelase check your credentials!';
+      var message = 'An error occurred, pelase check your credentials!';
 
       if (err.message != null) {
-        message = err.message;
+        message = err.message!;
       }
 
       // ignore: deprecated_member_use
       Scaffold.of(ctx).showSnackBar(
         SnackBar(
-          content: Text(message!),
+          content: Text(message),
           backgroundColor: Theme.of(ctx).errorColor,
         ),
       );
